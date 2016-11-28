@@ -21,11 +21,18 @@ static NSString *cellID = @"cell";
 {
     CGFloat _maxContentOffSet_Y;
 }
+-(void)dealloc
+{
+    [_webView.scrollView removeObserver:self forKeyPath:@"contentOffset"];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor =[UIColor whiteColor];
     self.navigationController.navigationBar.translucent = NO;
+    
+    
+    
     _maxContentOffSet_Y  = 100;
     
     [self.view addSubview:self.tableView];
